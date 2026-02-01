@@ -54,7 +54,6 @@ function findMermaidCli(override) {
 }
 
 function mermaidThemeFromStyle(style) {
-  if (style === "sketch") return "neutral";
   if (["github", "academic", "magazine", "default"].includes(style)) return "neutral";
   return "neutral";
 }
@@ -167,7 +166,7 @@ function renderTemplate(title, bodyHtml, style, customCss) {
   }
 
   // Inject highlight.js styles (choose light or dark based on theme)
-  const isDarkTheme = ["sketch", "magazine"].includes(style);
+  const isDarkTheme = ["magazine"].includes(style);
 
   const hljsLightStyle = `
 <style>
@@ -341,6 +340,7 @@ export async function toPdf({
   style = "github",
   customCssPath,
   keepHtml = true,
+  writeMeta = false,
   allowScripts = false,
   mermaidEnabled = true,
   mermaidCli,
@@ -419,8 +419,12 @@ export async function toPdf({
     pageCount: getPdfPageCount(outputPdf),
     inputHash: sha256(rawContent || url || ""),
   };
-  const metaPath = outputPdf.replace(/\.pdf$/i, "") + ".meta.json";
-  fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2), "utf-8");
+
+  let metaPath = null;
+  if (writeMeta) {
+    metaPath = outputPdf.replace(/\.pdf$/i, "") + ".meta.json";
+    fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2), "utf-8");
+  }
 
   return {
     pdfPath: outputPdf,
@@ -438,6 +442,7 @@ function parseArgs(argv) {
     style: "default",
     format: "markdown",
     noHtml: false,
+    writeMeta: false,
     allowScripts: false,
     noMermaid: false,
     mermaidCli: null,
@@ -451,6 +456,7 @@ function parseArgs(argv) {
     else if (a === "--style") args.style = argv[++i];
     else if (a === "--format") args.format = argv[++i];
     else if (a === "--no-html") args.noHtml = true;
+    else if (a === "--meta") args.writeMeta = true;
     else if (a === "--allow-scripts") args.allowScripts = true;
     else if (a === "--no-mermaid") args.noMermaid = true;
     else if (a === "--mermaid-cli") args.mermaidCli = argv[++i];
@@ -475,9 +481,10 @@ Usage:
   node converter.js --url <url> --output <file.pdf> [options]
 
 Options:
-  --style <default|github|academic|sketch|magazine>
+  --style <default|github|academic|magazine>
   --format <markdown|html>
   --no-html
+  --meta
   --allow-scripts
   --no-mermaid
   --mermaid-cli <path>
@@ -492,6 +499,7 @@ async function main() {
     outputPath: args.output,
     style: args.style,
     keepHtml: !args.noHtml,
+    writeMeta: args.writeMeta,
     allowScripts: args.allowScripts,
     mermaidEnabled: !args.noMermaid,
     mermaidCli: args.mermaidCli,

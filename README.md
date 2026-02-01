@@ -66,7 +66,7 @@ node skills/web-to-pdf/scripts/converter.js \
   --input page.html --format html --output out.pdf
 ```
 
-**Supported themes**: `default` (Apple) | `github` | `academic` | `sketch` | `magazine`
+**Supported themes**: `default` (Apple) | `github` | `academic` | `magazine`
 
 ---
 

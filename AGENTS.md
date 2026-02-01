@@ -41,7 +41,7 @@ Optional dependencies:
 
 ### 1) `skills/web-to-pdf`
 - Export URL / HTML (local or URL) / Markdown (local) to PDF.
-- Markdown has 5 themes: `default` / `github` / `academic` / `sketch` / `magazine`.
+- Markdown has 4 themes: `default` / `github` / `academic` / `magazine`.
 - HTML/URL is "print only" - caller must handle layout.
 
 ### 2) `skills/web-to-png`

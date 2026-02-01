@@ -1,27 +1,26 @@
 # Web-to-PDF
 
-将 Markdown/HTML/URL 打印为专业 PDF 文档，适合技术文档、报告与归档。
+Convert Markdown/HTML/URL to professional PDF documents, ideal for technical documentation, reports, and archiving.
 
-## 主题风格
+## Theme Styles
 
-本技能提供 5 种精心设计的主题：
+This skill provides 5 carefully designed themes:
 
-| 主题      | 风格描述                          |
-|-----------|-----------------------------------|
-| default   | Apple 设计风格，简洁优雅          |
-| github    | GitHub README 风格，清晰易读      |
-| academic  | 学术论文风格，双栏布局            |
-| sketch    | 手绘笔记风格，个性化表达          |
-| magazine  | 杂志排版风格，首字下沉            |
+| Theme     | Style Description                        |
+|-----------|------------------------------------------|
+| default   | Apple design style, clean and elegant    |
+| github    | GitHub README style, clear and readable  |
+| academic  | Academic paper style, two-column layout  |
+| magazine  | Magazine layout style, drop cap effect   |
 
 ---
 
-## 代码高亮示例
+## Code Highlighting Examples
 
 ### JavaScript
 
 ```javascript
-// 转换 Markdown 为 PDF
+// Convert Markdown to PDF
 import { toPdf } from "./converter.js";
 
 async function convert() {
@@ -34,7 +33,7 @@ async function convert() {
     }
   });
   
-  console.log(`PDF 已生成: ${result.pdfPath}`);
+  console.log(`PDF generated: ${result.pdfPath}`);
 }
 ```
 
@@ -42,7 +41,7 @@ async function convert() {
 
 ```python
 def fibonacci(n: int) -> list[int]:
-    """生成斐波那契数列"""
+    """Generate Fibonacci sequence"""
     if n <= 0:
         return []
     if n == 1:
@@ -53,66 +52,66 @@ def fibonacci(n: int) -> list[int]:
         sequence.append(sequence[-1] + sequence[-2])
     return sequence
 
-# 示例调用
+# Example usage
 print(fibonacci(10))  # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 ```
 
 ---
 
-## 表格示例
+## Table Examples
 
-### CLI 参数一览
+### CLI Parameters Overview
 
-| 参数            | 说明                              | 默认值     |
-|-----------------|-----------------------------------|------------|
-| `--input`       | 输入文件路径（md/html）           | 必需       |
-| `--output`      | 输出 PDF 路径                     | 必需       |
-| `--style`       | 主题风格                          | `default`  |
-| `--format`      | 输入格式                          | `markdown` |
-| `--no-html`     | 不保留中间 HTML                   | `false`    |
-| `--no-mermaid`  | 禁用 Mermaid 预渲染               | `false`    |
-
----
-
-## 引用块样式
-
-> **提示**：本技能支持 Mermaid 图表预渲染。  
-> 只需在 Markdown 中使用标准的 mermaid 代码块即可。
+| Parameter       | Description                      | Default    |
+|-----------------|----------------------------------|------------|
+| `--input`       | Input file path (md/html)        | Required   |
+| `--output`      | Output PDF path                  | Required   |
+| `--style`       | Theme style                      | `default`  |
+| `--format`      | Input format                     | `markdown` |
+| `--no-html`     | Don't keep intermediate HTML     | `false`    |
+| `--no-mermaid`  | Disable Mermaid pre-rendering    | `false`    |
 
 ---
 
-## 列表样式
+## Blockquote Styles
 
-### 无序列表
-
-- 支持 Markdown 语法高亮
-- 自动处理 Mermaid 图表
-- 多种预设主题可选
-- Print-ready 输出品质
-
-### 有序列表
-
-1. 安装依赖：`npm install`
-2. 运行 Playwright：`pnpm exec playwright install chromium`
-3. 执行转换：`node scripts/converter.js --input doc.md --output output.pdf`
+> **Tip**: This skill supports Mermaid diagram pre-rendering.  
+> Just use standard mermaid code blocks in your Markdown.
 
 ---
 
-## 注脚与强调
+## List Styles
 
-这是一段包含 **粗体**、*斜体*、`行内代码` 和 [链接](https://example.com) 的文本。
+### Unordered List
 
-支持数学公式的场景可以使用 LaTeX 语法^[目前需要额外配置支持]。
+- Supports Markdown syntax highlighting
+- Automatically handles Mermaid diagrams
+- Multiple preset themes available
+- Print-ready output quality
+
+### Ordered List
+
+1. Install dependencies: `npm install`
+2. Run Playwright: `pnpm exec playwright install chromium`
+3. Execute conversion: `node scripts/converter.js --input doc.md --output output.pdf`
 
 ---
 
-## 分隔与排版
+## Footnotes and Emphasis
 
-本技能专注于 **输出品质**，每个主题都经过精心调校：
+This is a paragraph with **bold**, *italic*, `inline code`, and [links](https://example.com).
 
-- 字体层级清晰
-- 舒适的行高与间距
-- 代码块语法高亮
-- 表格与引用美化
+For scenarios requiring math formulas, you can use LaTeX syntax^[Additional configuration required].
 
-> 高质量的 PDF 输出，从 Markdown 开始。
+---
+
+## Separation and Typography
+
+This skill focuses on **output quality**, with each theme carefully crafted:
+
+- Clear font hierarchy
+- Comfortable line height and spacing
+- Code block syntax highlighting
+- Beautiful tables and blockquotes
+
+> High-quality PDF output, starting from Markdown.

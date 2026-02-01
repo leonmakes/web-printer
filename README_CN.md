@@ -64,7 +64,7 @@ node skills/web-to-pdf/scripts/converter.js \
   --input page.html --format html --output out.pdf
 ```
 
-**支持的主题**：`default`（Apple）| `github` | `academic` | `sketch` | `magazine`
+**支持的主题**：`default`（Apple）| `github` | `academic` | `magazine`
 
 ---
 

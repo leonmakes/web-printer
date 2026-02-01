@@ -61,7 +61,7 @@ export PLAYWRIGHT_BROWSERS_PATH=~/Library/Caches/ms-playwright  # macOS
 > 
 > ### Mode 1: Markdown Formatting (with beautification)
 > If content is in **Markdown format**, this skill provides **5 beautiful themes** for auto-formatting:
-> - `default` (Apple style), `github`, `academic` (paper), `sketch` (hand-drawn), `magazine`
+> - `default` (Apple style), `github`, `academic` (paper), `magazine`
 > - Agent only needs to organize content as Markdown to get professional formatting
 > 
 > ### Mode 2: HTML/URL Printing (print only, no beautification)
@@ -146,7 +146,7 @@ import { toPdf } from "./scripts/converter.js";
 toPdf({
   inputPath: "examples/skill-overview.md",
   outputPath: "output.pdf",
-  style: "default", // default | github | academic | sketch | magazine
+  style: "default", // default | github | academic | magazine
   options: {
     format: "markdown"
   }
@@ -176,7 +176,7 @@ node scripts/converter.js --input doc.md --output out.pdf --no-html
 | `--input` | Input file path (md/html) |
 | `--url` | Print URL directly |
 | `--output` | Output PDF path (required) |
-| `--style` | Theme: `default`/`github`/`academic`/`sketch`/`magazine` |
+| `--style` | Theme: `default`/`github`/`academic`/`magazine` |
 | `--format` | Input format: `markdown`/`html` |
 | `--no-html` | Don't keep intermediate HTML file |
 | `--allow-scripts` | Allow JavaScript execution |
@@ -194,7 +194,6 @@ web-to-pdf/
     default.html        # Default (Apple style)
     github.html         # GitHub long-form style
     academic.html       # Academic paper style
-    sketch.html         # Hand-drawn/Doodle style
     magazine.html       # Magazine layout style
   examples/             # Examples
     skill-overview.md   # Example
