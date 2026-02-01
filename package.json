@@ -1,17 +1,14 @@
 {
   "name": "web-printer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web printing toolkit with modular skills",
   "type": "module",
-  "keywords": [],
+  "private": true,
+  "keywords": [
+    "pdf",
+    "screenshot",
+    "web-printer"
+  ],
   "author": "Leon Liu",
-  "license": "MIT",
-  "dependencies": {
-    "highlight.js": "^11.11.1",
-    "markdown-it": "^14.1.0",
-    "markdown-it-anchor": "^9.2.0",
-    "markdown-it-footnote": "^4.0.0",
-    "markdown-it-toc-done-right": "^4.2.0",
-    "playwright": "^1.57.0"
-  }
+  "license": "MIT"
 }

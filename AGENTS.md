@@ -12,8 +12,8 @@
 ## 依赖安装（统一在项目根目录）
 ```bash
 cd /path/to/web-printer
-npm install
-npx playwright install chromium
+pnpm install
+pnpm exec playwright install chromium
 ```
 
 可选依赖：

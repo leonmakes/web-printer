@@ -12,66 +12,33 @@ description: "打印网页、导出 PDF、生成文档报告。当用户提到�
 
 ## 依赖
 
+> [!IMPORTANT]
+> 在 **skill 目录**（本 SKILL.md 所在目录）安装依赖，而不是用户的工作区。
+> 
+> `SKILL_DIR` = 本 SKILL.md 文件所在目录
 
-**本技能需要的 npm 依赖包（必需）**：
-
-```bash
-npm i playwright markdown-it markdown-it-footnote markdown-it-anchor markdown-it-toc-done-right
-```
-
-**可选依赖（按需）**：
-
-- `pdfinfo`（来自 poppler，用于页数统计）
-- `@mermaid-js/mermaid-cli`（Markdown 中含 mermaid 代码块时使用）
-- `Playwright Chromium`（PDF 渲染必须有浏览器可用）
-
-**推荐：全局安装 Playwright（避免重复下载）**：
+**安装依赖**（依赖在 `package.json` 中声明）：
 
 ```bash
-npm i -g playwright
-playwright install chromium
+cd $SKILL_DIR && pnpm install
 ```
 
-**仅本项目安装（可选）**：
+**安装浏览器**（Playwright 渲染必需）：
 
 ```bash
-npx playwright install chromium
+cd $SKILL_DIR && pnpm exec playwright install chromium
 ```
+
+**可选依赖**：
+
+- `pdfinfo`（来自 poppler，用于页数统计）：`brew install poppler`
+- `@mermaid-js/mermaid-cli`（Markdown 中含 mermaid 代码块时）：`pnpm add -g @mermaid-js/mermaid-cli`
 
 **复用 Playwright 浏览器缓存（避免重复下载）**：
 
 ```bash
-# macOS 默认缓存目录
-export PLAYWRIGHT_BROWSERS_PATH=~/Library/Caches/ms-playwright
-
-# Linux 常见目录
-# export PLAYWRIGHT_BROWSERS_PATH=~/.cache/ms-playwright
-```
-
-可选：安装依赖时跳过浏览器下载，避免重复拉取（需在 `npm install` 前设置）：
-
-```bash
-export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-```
-
-可选（页数统计）：
-
-```bash
-brew install poppler  # 提供 pdfinfo
-```
-
-**Mermaid 预渲染（可选）**：
-
-若 Markdown 中包含 `mermaid` 代码块，默认使用 Mermaid CLI 预渲染为 SVG（不执行脚本）。
-
-```bash
-npm i -g @mermaid-js/mermaid-cli
-```
-
-如未加入 PATH，可设置：
-
-```bash
-export MERMAID_CLI=/path/to/mmdc
+export PLAYWRIGHT_BROWSERS_PATH=~/Library/Caches/ms-playwright  # macOS
+# export PLAYWRIGHT_BROWSERS_PATH=~/.cache/ms-playwright        # Linux
 ```
 
 ## 核心策略
@@ -236,7 +203,7 @@ web-to-pdf/
 
 ```bash
 # 安装（在本地依赖已安装的前提下）
-npx playwright install chromium
+pnpm exec playwright install chromium
 ```
 
 支持选项：`printBackground`、`preferCSSPageSize`、`scale`、`margins`、`format`、`pageRanges`

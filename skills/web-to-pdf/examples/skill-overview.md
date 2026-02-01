@@ -93,7 +93,7 @@ print(fibonacci(10))  # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 ### 有序列表
 
 1. 安装依赖：`npm install`
-2. 运行 Playwright：`npx playwright install chromium`
+2. 运行 Playwright：`pnpm exec playwright install chromium`
 3. 执行转换：`node scripts/converter.js --input doc.md --output output.pdf`
 
 ---

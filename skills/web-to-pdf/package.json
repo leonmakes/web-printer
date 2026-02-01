@@ -1,0 +1,14 @@
+{
+    "name": "@web-printer/web-to-pdf",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "highlight.js": "^11.11.1",
+        "markdown-it": "^14.1.0",
+        "markdown-it-anchor": "^9.2.0",
+        "markdown-it-footnote": "^4.0.0",
+        "markdown-it-toc-done-right": "^4.2.0",
+        "playwright": "^1.57.0"
+    }
+}

@@ -20,7 +20,7 @@ cd web-printer
 pnpm install
 
 # 安装浏览器（Playwright）
-npx playwright install chromium
+pnpm exec playwright install chromium
 ```
 
 ## 🛠️ 技能一览

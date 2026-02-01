@@ -35,16 +35,16 @@ Render **HTML (local file) or URL** to high-quality PNG.
 > 
 > `SKILL_DIR` = the directory containing this SKILL.md file
 
-**Required npm packages**:
+**Install packages** (dependencies declared in `package.json`):
 
 ```bash
-cd $SKILL_DIR && npm i playwright
+cd $SKILL_DIR && pnpm install
 ```
 
 **Browser dependency**:
 
 ```bash
-cd $SKILL_DIR && npx playwright install chromium
+cd $SKILL_DIR && pnpm exec playwright install chromium
 ```
 
 ## Input & Output
