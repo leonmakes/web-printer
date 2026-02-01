@@ -12,16 +12,40 @@
 
 ## 📦 安装
 
-```bash
-# 进入项目目录
-cd web-printer
+### 🤖 AI Agent 安装
 
-# 安装依赖
+将以下 GitHub 地址提供给你的 AI Agent，它会自动下载并安装：
+
+| Skill | GitHub 地址 |
+|-------|------------|
+| **web-to-pdf** | `https://github.com/leonmakes/web-printer/tree/main/skills/web-to-pdf` |
+| **web-to-png** | `https://github.com/leonmakes/web-printer/tree/main/skills/web-to-png` |
+
+### 🔧 手动安装
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/leonmakes/web-printer.git
+
+# 2. 拷贝 skill 到你的 AI Agent 的 skills 目录
+#    以 Claude Code 为例：
+cp -r web-printer/skills/web-to-pdf ~/.claude/skills/
+cp -r web-printer/skills/web-to-png ~/.claude/skills/
+
+# 3. 进入 skill 目录安装依赖
+cd ~/.claude/skills/web-to-png
 pnpm install
 
-# 安装浏览器（Playwright）
+# 4. 安装浏览器（Playwright）
 pnpm exec playwright install chromium
 ```
+
+> **其他 AI Agent 的 skills 目录参考**：
+> - Claude Code: `~/.claude/skills/`
+> - Gemini CLI / Antigravity: `~/.gemini/antigravity/skills/`
+> - 其他 Agent：请参考对应文档
+
+每个 skill 目录包含独立的 `SKILL.md` 说明文档，详见各 skill 的使用指南。
 
 ## 🛠️ 技能一览
 
@@ -61,7 +85,7 @@ node skills/web-to-png/scripts/converter.js \
   --url https://example.com --preset infographic --output long.png
 ```
 
-**支持的预设**：`og` | `square` | `story` | `poster` | `banner` | `infographic`
+**支持的预设**：`og` | `post` | `infographic` | `poster` | `banner`
 
 可选：使用 `--meta` 才会输出对应的 `meta.json`。
 
