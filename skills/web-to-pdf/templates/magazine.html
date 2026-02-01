@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{title}}</title>
     <style>
-        /* ===== Premium Editorial Magazine Style ===== */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap');
+        /* ===== VOGUE/WIRED Premium Magazine Style ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
 
         :root {
             --black: #0a0a0a;
@@ -26,13 +26,13 @@
         }
 
         body {
-            font-family: 'Source Sans 3', -apple-system, sans-serif;
-            font-size: 16px;
-            line-height: 1.85;
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-size: 15px;
+            line-height: 1.9;
             color: var(--black);
             background: var(--white);
             margin: 0;
-            font-weight: 300;
+            font-weight: 400;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
@@ -52,22 +52,24 @@
 
         /* ===== Heading System ===== */
         h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 4.5em;
-            font-weight: 700;
-            line-height: 1.05;
-            letter-spacing: -0.02em;
-            margin: 0 0 0.3em;
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 5em;
+            font-weight: 400;
+            line-height: 0.95;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin: 0 0 0.2em;
             color: var(--black);
         }
 
         h2 {
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Bebas Neue', Impact, sans-serif;
             font-size: 2.2em;
-            font-weight: 700;
-            letter-spacing: -0.01em;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
             color: var(--black);
-            margin: 2em 0 0.6em;
+            margin: 2em 0 0.5em;
             position: relative;
             padding-bottom: 0.4em;
         }
@@ -83,10 +85,10 @@
         }
 
         h3 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.5em;
-            font-weight: 400;
-            font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            font-style: normal;
             color: var(--gray-600);
             margin: 1.8em 0 0.5em;
             letter-spacing: 0.01em;
@@ -94,13 +96,12 @@
 
         /* Subtitle/Lead */
         .lead {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.25em;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.3em;
             font-style: italic;
             line-height: 1.7;
             color: var(--gray-600);
             margin-bottom: 2.5em;
-            column-span: all;
             border-left: 3px solid var(--accent);
             padding-left: 1.2em;
         }
@@ -112,15 +113,15 @@
             hyphens: auto;
         }
 
-        /* Drop Cap - Elegant Style */
+        /* Drop Cap - Bold Style */
         .content>p:first-of-type::first-letter {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 4.2em;
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 4.5em;
             float: left;
             line-height: 0.8;
-            margin: 0.05em 0.12em 0 0;
-            color: var(--accent-dark);
-            font-weight: 700;
+            margin: 0.05em 0.1em 0 0;
+            color: var(--accent);
+            font-weight: 400;
         }
 
         /* Emphasis */
@@ -130,7 +131,7 @@
         }
 
         em {
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-style: italic;
         }
 
@@ -158,7 +159,7 @@
 
         blockquote::before {
             content: '"';
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Bebas Neue', Impact, sans-serif;
             font-size: 6em;
             color: var(--accent);
             position: absolute;
@@ -169,7 +170,7 @@
         }
 
         blockquote p {
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 1.5em;
             font-style: italic;
             font-weight: 400;
@@ -305,7 +306,7 @@
         }
 
         th {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 0.75em;
             font-weight: 600;
             letter-spacing: 0.08em;
@@ -370,22 +371,10 @@
         hr {
             column-span: all;
             border: none;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--gray-200) 20%, var(--gray-200) 80%, transparent 100%);
+            height: 3px;
+            background: var(--black);
             margin: 3em 0;
-            position: relative;
-        }
-
-        hr::before {
-            content: '◆';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--white);
-            padding: 0 16px;
-            color: var(--accent);
-            font-size: 0.7em;
+            opacity: 1;
         }
 
         /* ===== Images ===== */
