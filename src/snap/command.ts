@@ -9,7 +9,6 @@ export const command = new Command('snap')
     .option('--width <number>', 'Custom width in pixels')
     .option('--height <number>', 'Custom height in pixels')
     .option('--scale <number>', 'Device scale factor', '2')
-    .option('--auto-cleanup', 'Delete input file after conversion')
     .action(async (options) => {
         try {
             const result = await render({
@@ -19,7 +18,6 @@ export const command = new Command('snap')
                 width: options.width ? parseInt(options.width) : undefined,
                 height: options.height ? parseInt(options.height) : undefined,
                 scale: parseFloat(options.scale),
-                autoCleanup: options.autoCleanup,
             });
             console.log(JSON.stringify(result, null, 2));
         } catch (error) {

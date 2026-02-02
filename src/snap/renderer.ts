@@ -10,7 +10,6 @@ export interface Options {
     width?: number;
     height?: number;
     scale?: number;
-    autoCleanup?: boolean;
 }
 
 export interface Result {
@@ -71,10 +70,6 @@ export async function render(options: Options): Promise<Result> {
             type: 'png',
             clip: { x: 0, y: 0, width, height },
         });
-
-        if (options.autoCleanup && fs.existsSync(inputPath)) {
-            fs.unlinkSync(inputPath);
-        }
 
         return {
             pngPath: outputPath,

@@ -51,6 +51,12 @@ PagePress provides two PDF generation modes:
 pagepress snap -i input.html -o output.png --preset og
 ```
 
+### Assets Directory (AI Agent Guidance)
+
+- Ask the user where generated assets should be stored.
+- Remember the answer as `$ASSETS_DIR` for the session.
+- If the user does not reply or accepts the default, use `${workspaceRoot}/assets` (workspace root `assets/`).
+
 ### Scenario Routing Table (AI Agent Decision Guide)
 
 | Scenario | Trigger Phrases | Parameters | Layout Guidelines |
@@ -97,7 +103,6 @@ pagepress snap -i input.html -o output.png --preset og
 - `--width <px>` - custom width
 - `--height <px>` - custom height
 - `--scale <n>` - device scale factor (default: 2)
-- `--auto-cleanup` - delete input file after conversion
 
 ## Image Design Guidelines
 
