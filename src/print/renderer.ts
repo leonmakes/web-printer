@@ -36,6 +36,7 @@ export interface Options {
     input: string;
     output: string;
     template?: string;
+    safe?: boolean;
 }
 
 export interface Result {
@@ -49,6 +50,7 @@ export interface Result {
 
 export async function render(options: Options): Promise<Result> {
     const template = getTemplate(options.template ?? 'default');
+    const safeMode = options.safe ?? false;
     const templatesDir = findTemplatesDir();
     const templatePath = path.join(templatesDir, template.file);
 
@@ -137,6 +139,9 @@ export async function render(options: Options): Promise<Result> {
     } else if (options.input.endsWith('.html')) {
         htmlContent = fs.readFileSync(inputPath, 'utf-8');
     } else if (options.input.startsWith('http')) {
+        if (safeMode) {
+            throw new Error('Safe mode does not allow remote URL inputs.');
+        }
         htmlContent = '';
     } else {
         throw new Error(`Unsupported input format: ${options.input}`);
@@ -146,7 +151,16 @@ export async function render(options: Options): Promise<Result> {
 
     try {
         browser = await chromium.launch({ headless: true });
-        const context = await browser.newContext();
+        const context = await browser.newContext({ javaScriptEnabled: !safeMode });
+        if (safeMode) {
+            await context.route('**/*', (route) => {
+                const url = route.request().url();
+                if (url.startsWith('http://') || url.startsWith('https://')) {
+                    return route.abort();
+                }
+                return route.continue();
+            });
+        }
         const page = await context.newPage();
 
         if (options.input.startsWith('http')) {
@@ -162,7 +176,7 @@ export async function render(options: Options): Promise<Result> {
         }
 
         // Inject and run mermaid.js if needed
-        if (hasMermaid) {
+        if (hasMermaid && !safeMode) {
             const mermaidPath = require.resolve('mermaid/dist/mermaid.min.js');
             await page.addScriptTag({ path: mermaidPath });
 

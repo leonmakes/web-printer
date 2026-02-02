@@ -10,6 +10,7 @@ export interface Options {
     width?: number;
     height?: number;
     scale?: number;
+    safe?: boolean;
 }
 
 export interface Result {
@@ -28,6 +29,7 @@ export async function render(options: Options): Promise<Result> {
     const width = options.width ?? preset.width;
     const height = options.height ?? preset.height;
     const scale = options.scale ?? 2;
+    const safeMode = options.safe ?? false;
 
     let browser: Browser | null = null;
 
@@ -36,11 +38,24 @@ export async function render(options: Options): Promise<Result> {
         const context = await browser.newContext({
             viewport: { width, height },
             deviceScaleFactor: scale,
+            javaScriptEnabled: !safeMode,
         });
+        if (safeMode) {
+            await context.route('**/*', (route) => {
+                const url = route.request().url();
+                if (url.startsWith('http://') || url.startsWith('https://')) {
+                    return route.abort();
+                }
+                return route.continue();
+            });
+        }
         const page = await context.newPage();
 
         const inputPath = path.resolve(options.input);
         if (options.input.startsWith('http://') || options.input.startsWith('https://')) {
+            if (safeMode) {
+                throw new Error('Safe mode does not allow remote URL inputs.');
+            }
             await page.goto(options.input, { waitUntil: 'networkidle' });
         } else if (fs.existsSync(inputPath)) {
             const content = fs.readFileSync(inputPath, 'utf-8');

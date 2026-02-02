@@ -43,6 +43,11 @@ PagePress provides two PDF generation modes:
 - `-i, --input <path>` - input Markdown or HTML file
 - `-o, --output <path>` - output PDF path
 - `-t, --template <name>` - template (default: default)
+- `--safe` - disable external network requests and JavaScript execution
+
+**Safe mode notes** (applies to print and snap):
+- Remote URL input is not allowed.
+- External network requests and JavaScript execution are disabled.
 
 ## Image Output
 
@@ -102,6 +107,7 @@ pagepress snap -i input.html -o output.png --preset og
 - `--width <px>` - custom width
 - `--height <px>` - custom height
 - `--scale <n>` - device scale factor (default: 2)
+- `--safe` - disable external network requests and JavaScript execution
 
 ## Image Design Guidelines
 
