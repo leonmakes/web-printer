@@ -14,7 +14,7 @@
   },
   "files": [
     "dist",
-    "src/print/templates"
+    "src/pdf/templates"
   ],
   "keywords": [
     "pdf",

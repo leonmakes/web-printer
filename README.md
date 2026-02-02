@@ -36,13 +36,13 @@ Convert HTML/Markdown into PDF documents. Supports syntax highlighting.
 
 ```bash
 # Markdown to PDF (Apple style template)
-pagepress print -i document.md -o output.pdf --template default
+pagepress pdf -i document.md -o output.pdf --template default
 
 # Local HTML file to PDF
-pagepress print -i page.html -o output.pdf
+pagepress pdf -i page.html -o output.pdf
 
-# Print a web page (print as-is)
-pagepress print -i https://example.com -o webpage.pdf
+# Render a web page (as-is)
+pagepress pdf -i https://example.com -o webpage.pdf
 ```
 
 **Supported templates**:
@@ -56,13 +56,13 @@ Render HTML/URLs into PNG images, suitable for social share cards, posters, and 
 
 ```bash
 # Generate an OG card (1200x630)
-pagepress snap -i card.html -o og.png --preset og
+pagepress shot -i card.html -o og.png --preset og
 
 # Generate a long infographic
-pagepress snap -i stats.html -o infographic.png --preset infographic
+pagepress shot -i stats.html -o infographic.png --preset infographic
 
 # Webpage screenshot
-pagepress snap -i https://example.com -o screenshot.png
+pagepress shot -i https://example.com -o screenshot.png
 ```
 
 **Supported presets**:

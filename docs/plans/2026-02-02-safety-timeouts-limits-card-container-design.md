@@ -5,9 +5,9 @@ We need to reduce SSRF/data exfiltration risk, avoid hangs on long-lived connect
 
 ## Goals
 - Add `--safe` to disable external network requests and JavaScript execution.
-- Make navigation `waitUntil` and `timeout` configurable for print and snap.
-- Enforce reasonable bounds on snap `width`, `height`, and `scale` with clear errors.
-- Require `#card-container` for PNG output and fail fast if missing.
+- Make navigation `waitUntil` and `timeout` configurable for pdf and shot.
+- Enforce reasonable bounds on shot `width`, `height`, and `scale` with clear errors.
+- Require `#container` for PNG output and fail fast if missing.
 - Add `-p` shorthand for `--preset` to align with `-t/--template`.
 
 ## Non-goals
@@ -16,8 +16,8 @@ We need to reduce SSRF/data exfiltration risk, avoid hangs on long-lived connect
 
 ## Changes
 - **CLI**
-  - Print: `--safe`, `--wait-until <state>`, `--timeout <ms>`.
-  - Snap: `-p, --preset <name>`, `--safe`, `--wait-until <state>`, `--timeout <ms>`.
+  - PDF: `--safe`, `--wait-until <state>`, `--timeout <ms>`.
+  - Shot: `-p, --preset <name>`, `--safe`, `--wait-until <state>`, `--timeout <ms>`.
 - **Safety mode**
   - If `--safe` and input is a remote URL, return an error.
   - Disable JS via `javaScriptEnabled: false`.
@@ -25,13 +25,13 @@ We need to reduce SSRF/data exfiltration risk, avoid hangs on long-lived connect
 - **Navigation controls**
   - Default `waitUntil=networkidle`, `timeout=30000`.
   - Accept only `load|domcontentloaded|networkidle`.
-- **Snap constraints**
+- **Shot constraints**
   - Enforce `width/height` in [100, 5000] and `scale` in [1, 4].
 - **PNG container enforcement**
-  - Require `#card-container` and use its bounding box for screenshot.
+  - Require `#container` and use its bounding box for screenshot.
 
 ## Testing
 - Manual: verify `--safe` blocks URL input and external requests.
 - Manual: verify waitUntil/timeout changes navigation behavior.
 - Manual: confirm dimension validation errors for out-of-range values.
-- Manual: confirm missing `#card-container` throws a clear error.
+- Manual: confirm missing `#container` throws a clear error.

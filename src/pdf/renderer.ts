@@ -38,9 +38,9 @@ function normalizeTimeout(value?: number): number {
 function findTemplatesDir(): string {
     const candidates = [
         // When running from project root (dev/installed)
-        path.resolve(process.cwd(), 'src/print/templates'),
+        path.resolve(process.cwd(), 'src/pdf/templates'),
         // Relative to dist/main.js
-        path.resolve(__dirname, '..', 'src', 'print', 'templates'),
+        path.resolve(__dirname, '..', 'src', 'pdf', 'templates'),
         // Relative to source file location
         path.resolve(__dirname, 'templates'),
     ];

@@ -36,13 +36,13 @@ npx pagepress <command> [options]
 
 ```bash
 # Markdown 转 PDF（使用 Apple 风格模板）
-pagepress print -i document.md -o output.pdf --template default
+pagepress pdf -i document.md -o output.pdf --template default
 
 # 本地 HTML 文件转 PDF
-pagepress print -i page.html -o output.pdf
+pagepress pdf -i page.html -o output.pdf
 
-# 网页打印（原样打印）
-pagepress print -i https://example.com -o webpage.pdf
+# 网页打印（原样渲染）
+pagepress pdf -i https://example.com -o webpage.pdf
 ```
 
 **支持的模板**：
@@ -56,13 +56,13 @@ pagepress print -i https://example.com -o webpage.pdf
 
 ```bash
 # 生成 OG 卡片（1200×630）
-pagepress snap -i card.html -o og.png --preset og
+pagepress shot -i card.html -o og.png --preset og
 
 # 生成信息长图
-pagepress snap -i stats.html -o infographic.png --preset infographic
+pagepress shot -i stats.html -o infographic.png --preset infographic
 
 # 网页截图
-pagepress snap -i https://example.com -o screenshot.png
+pagepress shot -i https://example.com -o screenshot.png
 ```
 
 **支持的预设**：

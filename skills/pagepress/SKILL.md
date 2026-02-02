@@ -17,7 +17,7 @@ npx playwright install chromium
 ## PDF Output
 
 ```bash
-pagepress print -i input.md -o output.pdf --template default
+pagepress pdf -i input.md -o output.pdf --template default
 ```
 
 ### Core Strategy
@@ -47,14 +47,14 @@ PagePress provides two PDF generation modes:
 - `--timeout <ms>` - navigation timeout in milliseconds
 - `--safe` - disable external network requests and JavaScript execution
 
-**Safe mode notes** (applies to print and snap):
+**Safe mode notes** (applies to pdf and shot):
 - Remote URL input is not allowed.
 - External network requests and JavaScript execution are disabled.
 
 ## Image Output
 
 ```bash
-pagepress snap -i input.html -o output.png --preset og
+pagepress shot -i input.html -o output.png --preset og
 ```
 
 > PNG output requires a `#container` element. Rendering fails if it is missing.
@@ -137,8 +137,8 @@ pagepress snap -i input.html -o output.png --preset og
 
 ```bash
 # Generate an OG image
-pagepress snap -i card.html -o og.png --preset og
+pagepress shot -i card.html -o og.png --preset og
 
 # Generate a PDF report
-pagepress print -i report.md -o report.pdf --template github
+pagepress pdf -i report.md -o report.pdf --template github
 ```

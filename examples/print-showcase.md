@@ -20,10 +20,10 @@ PagePress was built for exactly that:
 
 ```bash
 # Generate a PDF in one command
-pagepress print -i README.md -o doc.pdf --template magazine
+pagepress pdf -i README.md -o doc.pdf --template magazine
 
 # Snapshot an OG image
-pagepress snap -i card.html -o og.png --preset og
+pagepress shot -i card.html -o og.png --preset og
 ```
 
 ---
@@ -98,17 +98,17 @@ PagePress uses a **domain-driven** code organization:
 ```mermaid
 flowchart TD
     subgraph CLI
-        A[main.ts] --> B[print/]
-        A --> C[snap/]
+        A[main.ts] --> B[pdf/]
+        A --> C[shot/]
     end
 
-    subgraph Print Domain
+    subgraph PDF Domain
         B --> D[renderer.ts]
         B --> E[templates/]
         B --> F[fonts.ts]
     end
 
-    subgraph Snap Domain
+    subgraph Shot Domain
         C --> G[renderer.ts]
         C --> H[presets.ts]
     end
@@ -135,7 +135,7 @@ flowchart TD
 We believe great tools should be **invisible**. You do not need to learn complex configuration or install a pile of dependencies. Just:
 
 ```bash
-pagepress print -i your-doc.md -o output.pdf
+pagepress pdf -i your-doc.md -o output.pdf
 ```
 
 **That's it.** Leave the rest to PagePress.
@@ -155,10 +155,10 @@ npx playwright install chromium
 
 ```bash
 # PDF generation
-pagepress print -i document.md -o output.pdf
+pagepress pdf -i document.md -o output.pdf
 
 # Image snapshot
-pagepress snap -i card.html -o image.png --preset og
+pagepress shot -i card.html -o image.png --preset og
 ```
 
 ---

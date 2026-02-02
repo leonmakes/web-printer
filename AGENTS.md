@@ -25,12 +25,12 @@ Use a **domain-based** directory structure rather than technical layers:
 ```
 src/
 ├── cli.ts              # entry
-├── print/              # Print (PDF) domain
+├── pdf/                # PDF domain
 │   ├── renderer.ts     # PDF rendering logic
 │   ├── templates.ts    # template definitions
 │   ├── fonts.ts        # font injection
 │   └── templates/      # HTML template files
-└── snap/               # Snap (PNG) domain
+└── shot/               # Shot (PNG) domain
     ├── renderer.ts     # screenshot logic
     └── presets.ts      # size presets
 ```
@@ -51,14 +51,14 @@ The main program source lives in `src/`, and the CLI is exposed via `dist/cli.js
 ## CLI Usage
 
 ```bash
-# PDF printing
-pagepress print -i document.md -o output.pdf --template default
-pagepress print -i page.html -o output.pdf
-pagepress print -i https://example.com -o webpage.pdf
+# PDF rendering
+pagepress pdf -i document.md -o output.pdf --template default
+pagepress pdf -i page.html -o output.pdf
+pagepress pdf -i https://example.com -o webpage.pdf
 
-# PNG snapshots
-pagepress snap -i card.html -o og.png --preset og
-pagepress snap -i https://example.com -o screenshot.png
+# PNG shots
+pagepress shot -i card.html -o og.png --preset og
+pagepress shot -i https://example.com -o screenshot.png
 ```
 
 ## Git Commit Conventions

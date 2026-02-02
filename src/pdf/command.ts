@@ -1,8 +1,8 @@
 import { Command } from 'commander';
 import { render, Options } from './renderer.ts';
 
-export const command = new Command('print')
-    .description('Print Markdown or HTML to PDF')
+export const command = new Command('pdf')
+    .description('Render Markdown or HTML to PDF')
     .requiredOption('-i, --input <path>', 'Input file path or URL')
     .requiredOption('-o, --output <path>', 'Output PDF file path')
     .option('-t, --template <name>', 'PDF template (default, github, magazine)', 'default')

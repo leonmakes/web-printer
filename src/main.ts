@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { command as printCommand } from './print/command.ts';
-import { command as snapCommand } from './snap/command.ts';
+import { command as pdfCommand } from './pdf/command.ts';
+import { command as shotCommand } from './shot/command.ts';
 
 const program = new Command();
 
@@ -11,7 +11,7 @@ program
     .description('Convert web pages and Markdown to PDF and images')
     .version('0.1.0');
 
-program.addCommand(printCommand);
-program.addCommand(snapCommand);
+program.addCommand(pdfCommand);
+program.addCommand(shotCommand);
 
 program.parse();
