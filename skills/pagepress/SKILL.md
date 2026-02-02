@@ -1,6 +1,6 @@
 ---
 name: pagepress
-description: "Print web pages, export PDF, generate document reports, screenshot web pages, generate OG images, social cards, posters, infographics. Use when user mentions 'export PDF', 'print to PDF', 'generate report', 'convert to document', 'screenshot', 'capture', 'OG image', 'social card', 'poster', 'infographic', 'cheat sheet', 'web to image'. Supports beautiful Markdown formatting and visual assets."
+description: "Render web pages and Markdown to PDF, generate PDF reports, capture screenshots, and generate OG images, social cards, posters, banners, and infographics. Use when user mentions 'convert to PDF', 'save as PDF', 'generate a PDF report', 'summarize into PDF', 'print to PDF', 'screenshot', 'capture webpage', 'OG image', 'link preview', 'social card', 'poster', 'banner', 'cover image', 'infographic', 'cheat sheet', or 'web to image'. Supports beautiful Markdown formatting and visual assets."
 ---
 
 # PagePress
@@ -10,7 +10,7 @@ CLI tool to convert HTML/Markdown into PDF documents or PNG images.
 ## Installation
 
 ```bash
-npm install -g pagepress
+npm install -g @liustack/pagepress
 npx playwright install chromium
 ```
 
@@ -25,14 +25,15 @@ pagepress pdf -i input.md -o output.pdf --template default
 PagePress provides two PDF generation modes:
 1. **Markdown Beautification**: input Markdown and use built-in templates (default/github/magazine) for layout and styling.
 2. **HTML/URL Print As-is**: input HTML or a URL and print directly without extra styles. The Agent should finish the HTML layout first.
+If the user asks to summarize or generate a report, the Agent should first create the Markdown content, then render it to PDF.
 
 ### Scenario Routing Table (PDF)
 
 | Scenario | Trigger Phrases | Input Method | Template/Options |
 |---|---|---|---|
-| **Markdown to document** | "export PDF", "generate report", "save as PDF", "convert to document" | `-i file.md` | `--template default` (or other templates) |
-| **Web page print** | "print web page", "print to PDF", "save page as PDF" | `-i https://...` | Default (no template) |
-| **HTML print** | "print HTML", "render HTML to PDF" | `-i file.html` | Default (no template) |
+| **Markdown to document** | "convert to PDF", "save as PDF", "export PDF", "generate a PDF report", "summarize into PDF", "convert Markdown to PDF" | `-i file.md` | `--template default` (or other templates) |
+| **Web page print** | "print web page", "print to PDF", "save page as PDF", "export page to PDF", "render this page to PDF" | `-i https://...` | Default (no template) |
+| **HTML print** | "print HTML", "render HTML to PDF", "HTML to PDF" | `-i file.html` | Default (no template) |
 
 **Supported templates (Markdown only)**:
 - `default` - Apple style, clean and elegant
@@ -78,11 +79,11 @@ pagepress shot -i input.html -o output.png --preset og
 
 | Scenario | Trigger Phrases | Parameters | Layout Guidelines |
 |---|---|---|---|
-| **screenshot (default)** | "screenshot this page", "capture the webpage", "take a screenshot" | **no preset** | Preserve the original web layout |
-| **og (social card)** | "OG image", "social preview", "share card", "link preview" | `--preset og` | 1200x630; safe margin >=120px |
-| **infographic** | "cheat sheet", "quick reference", "data card", "infographic", "long-form image" | `--preset infographic` | 1080x1350; high information density |
-| **poster** | "poster", "vertical promo", "event poster", "promo poster" | `--preset poster` | 1200x1500; minimal text, strong visual impact |
-| **banner** | "header", "cover image", "hero", "banner", "cover" | `--preset banner` | 1600x900; horizontal layout |
+| **screenshot (default)** | "screenshot", "take a screenshot", "capture webpage", "webpage screenshot" | **no preset** | Preserve the original web layout |
+| **og (social card)** | "OG image", "social preview", "link preview", "share card", "social card" | `--preset og` | 1200x630; safe margin >=120px |
+| **infographic** | "infographic", "long-form image", "cheat sheet", "quick reference", "data card" | `--preset infographic` | 1080x1350; high information density |
+| **poster** | "poster", "event poster", "promo poster", "vertical promo" | `--preset poster` | 1200x1500; minimal text, strong visual impact |
+| **banner** | "banner", "cover image", "header image", "hero image", "cover" | `--preset banner` | 1600x900; horizontal layout |
 
 ### Preset Specs and Design Guidelines (AI Agent Reference)
 
