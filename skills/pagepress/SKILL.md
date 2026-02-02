@@ -68,7 +68,8 @@ pagepress snap -i input.html -o output.png --preset og
 ### Temporary HTML Cleanup (AI Agent Guidance)
 
 - If the AI Agent generates temporary HTML for rendering, use the system temporary directory:
-  - Prefer `$TMPDIR`; if unavailable, use `/tmp`.
+  - If the agent provides its own session temp directory, prefer that.
+  - Otherwise, use `$TMPDIR`; if unavailable, use `/tmp`.
   - Create a session subdirectory like `$TMPDIR/pagepress-$SESSION_ID/`.
 - After a successful render, delete only the temporary HTML it generated.
 - If the user asks to keep inputs for debugging or reuse, copy the file into `$ASSETS_DIR` and report its path.
